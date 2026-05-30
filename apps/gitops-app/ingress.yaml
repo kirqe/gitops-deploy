@@ -4,10 +4,11 @@ metadata:
   name: gitops-app
   namespace: default
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   ingressClassName: nginx
   rules:
+    # host-less = catch-all. Add `host: app.example.com` to route by domain.
     - http:
         paths:
           - path: /
