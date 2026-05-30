@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kirqe/gitops-deploy
+    targetRevision: main
+    path: apps/gitops-app        # folder Argo reconciles
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true                # delete resources removed from git
+      selfHeal: true             # revert manual cluster edits
