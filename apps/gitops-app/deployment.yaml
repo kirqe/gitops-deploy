@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gitops-app
-          image: ghcr.io/kirqe/gitops-app:cfb051f
+          image: ghcr.io/kirqe/gitops-app:b8bee19
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
